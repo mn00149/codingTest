@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Stack
 from collections import deque
 stack = []
@@ -24,3 +26,49 @@ queue.popleft()
 queue.popleft()
 queue.reverse()
 print(queue)
+# 인접행렬
+inf = 9999999999
+AM = [
+    [0, 7, 5],
+    [7, 0, inf],
+    [5, inf, 0]
+]
+graph = [[] for _ in range(3)]
+graph[0].append((1, 7))
+graph[0].append((2, 5))
+graph[1].append((0, 7))
+graph[2].append((0, 5))
+
+# 재귀함수를 이용한 팩토리얼 구현
+
+
+def factorialRecursive(n):
+    if n <= 1:
+        return 1
+    return n*factorialRecursive(n-1)
+
+
+visted = [False]*9
+
+graph2 = [
+    [],
+    [2, 3, 8],
+    [1, 7],
+    [1, 4, 5],
+    [3, 5],
+    [3, 4],
+    [7],
+    [2, 6, 8],
+    [1, 7]
+]
+
+
+def dfs(v, visted, graph):
+    visted[v] = True
+    print(v)
+    for i in graph[v]:
+        if not visted[i]:
+            dfs(i, visted, graph)
+
+
+dfs(1, visted, graph2)

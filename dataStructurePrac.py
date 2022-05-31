@@ -71,4 +71,20 @@ def dfs(v, visted, graph):
             dfs(i, visted, graph)
 
 
-dfs(1, visted, graph2)
+# dfs(1, visted, graph2)
+
+
+def bfs(v, visted, graph):
+    queue = deque([v])
+    visted[v] = True
+
+    while(queue):
+        v = queue.popleft()
+        print(v)
+        for i in graph[v]:
+            if not visted[i]:
+                queue.append(i)
+                visted[i] = True
+
+
+bfs(1, visted, graph2)
